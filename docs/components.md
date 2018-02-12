@@ -91,10 +91,10 @@ jails.start()
 ```
 
 
-## Hello World Demo
+## Twitter Demo
 
-It's not that complicated to setup a Jails app, but you can clone the [Hello World App](https://github.com/jails-org/Demos/tree/master/HelloWorld) in order to save some time and play with it a little.
+It's not that complicated to setup a Jails app, but you can clone the [Twitter App](https://github.com/jails-org/Demos/tree/master/Twitter) in order to save some time and play with it a little.
 
-The [Hello World App](https://github.com/jails-org/Demos/tree/master/HelloWorld) is also updated with Jails guidelines and best practices, you just need to clone it and follow the `README.md` instructions and you'll be ready to go!
+The [Twitter App](https://github.com/jails-org/Demos/tree/master/Twitter) is also updated with Jails guidelines and best practices, you just need to clone it you'll be ready to go!
 
 ---
