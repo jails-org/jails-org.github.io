@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=615badd5">
+    <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
+    <script src="assets/script.js?t=42463e55"></script>
+    <title>Helpers - Jails</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a class="link title  link-index" href="index.html">Jails</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Getting Started</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-instalation" href="instalation.html">Quick Install</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Components</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-components" href="components.html">Introduction</a>
+                </li>
+                <li class="menu-item -level-2"><a class="link title -active link-helpers" href="helpers.html">Helpers</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a class="hlink link-.init" href="#.init">.init</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.elm" href="#.elm">.elm</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.on" href="#.on">.on</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.off" href="#.off">.off</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.emit" href="#.emit">.emit</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.trigger" href="#.trigger">.trigger</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.publish-.subscribe" href="#.publish-.subscribe">.publish / .subscribe</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.expose" href="#.expose">.expose</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.get" href="#.get">.get</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.props" href="#.props">.props</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-.injection" href="#.injection">.injection</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Jails API</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-jails-api" href="jails-api.html">Documentation</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Packages</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-packages" href="packages.html">Introduction</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Examples</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-demos" href="demos.html">Demos</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="body page-helpers">
+        <div class="header-nav">
+          <div class="right"><a class="iconlink" href="https://github.com/https://github.com/jails-org/Jails" data-title="https://github.com/jails-org/Jails">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="helpers">Helpers</h1>
+<p>Helpers are built-in scoped <code>functions</code> and <code>objects</code> utilities passed to the component function.</p>
+<h2 id=".init">.init</h2>
+<p>This is the most used helper and it should exist in every component. The role of this <code>function</code> is to execute a set of initial functions in the top of your compoennt function, you can create all your functions below the <code>init()</code> definition and visualize quickly what does you component do when it starts just by looking at the top of your script.</p>
+<p><strong>Child components are initialized before its parent components so you can be sure that a container component has its child components ready to be accessed/used.</strong></p>
+<pre><code class="lang-js"><span class="pl-c">//Using alias &quot;main&quot; for init, just to make it more ELMish</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main, elm} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        sayHello
+    ])
+
+    <span class="pl-k">const</span> sayHello = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+        <span class="pl-c1">console</span>.log(<span class="pl-s">&apos;Hello!!!&apos;</span>, elm)
+}
+</code></pre>
+<p><strong>Important</strong>: All the <code>functions</code> in the init/main list will get the same helpers from the component <code>function</code>.</p>
+<h2 id=".elm">.elm</h2>
+<p>elm is a reference to the <code>HTMLElement</code> that contains the <code>data-component</code> definition.
+Use this element as a context to search for child nodes using <code>elm.querySelector()</code> or
+<code>elm.querySelectorAll</code>.</p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        logElement
+    ])
+
+    <span class="pl-k">const</span> logElement = <span class="hljs-function">(<span class="hljs-params"> {elm} </span>) =&gt;</span>
+        <span class="pl-c1">console</span>.log( elm )
+}
+</code></pre>
+<h2 id=".on">.on</h2>
+<p>A function helper to add event listener that support <code>event delegation</code>.</p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        events
+    ])
+
+    <span class="pl-k">const</span> events = <span class="hljs-function">(<span class="hljs-params"> {on} </span>) =&gt;</span> {
+        on(<span class="pl-s">&apos;click&apos;</span>, componentClick)
+        on(<span class="pl-s">&apos;click&apos;</span>, {<span class="pl-s">&apos;a&apos;</span>:linkClick})
+    }
+
+    <span class="pl-k">const</span> componentClick = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span>
+        <span class="pl-c1">console</span>.log( <span class="pl-s">&apos;Clicking in the component area&apos;</span>, event.target )
+
+    <span class="pl-k">const</span> linkClick = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span>
+        <span class="pl-c1">console</span>.log( <span class="pl-s">&apos;Clicking in a child link element&apos;</span>, event.target )
+}
+</code></pre>
+<p><em>Reminder</em> : <strong>events</strong> function gets the helpers from the component function through <code>init/main</code> call.
+Use that when possible to make the component function definition cleaner.</p>
+<p><strong>Important</strong> : Always use <code>event delegation</code> so events can persist even if the child nodes are replaced to new ones.</p>
+<h2 id=".off">.off</h2>
+<p>A helper that removes a event listener.</p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main, off} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        events
+    ])
+
+    <span class="pl-k">const</span> events = <span class="hljs-function">(<span class="hljs-params"> {on} </span>) =&gt;</span> {
+        on(<span class="pl-s">&apos;click&apos;</span>, componentClick)
+    }
+
+    <span class="pl-k">const</span> componentClick = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
+        <span class="pl-c1">console</span>.log( <span class="pl-s">&apos;Clicking in the component area&apos;</span>, event.target )
+        off(<span class="pl-s">&apos;click&apos;</span>, componentClick)
+        <span class="pl-c">//Click will no longer log anymore</span>
+    }
+}
+</code></pre>
+<p><strong>Important</strong> : In the example above, the <code>off()</code> helper has to be defined in the component function. That&apos;s because <code>componentClick</code> is a event handler and it&apos;s not directly executed by <code>init/main</code> function.</p>
+<h2 id=".emit">.emit</h2>
+<p>This handler emits <strong>DOM Custom Events</strong> an event to parent and siblings components. It is a way to communicate one component to another in a child -&gt; parent direction.</p>
+<p>The first parameter is any string you want, the second parameter optional data to pass on.</p>
+<p><strong>Parent Component</strong></p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        events
+    ])
+
+    <span class="pl-k">const</span> events = <span class="hljs-function">(<span class="hljs-params"> {on} </span>) =&gt;</span>
+        on(<span class="pl-s">&apos;time-ellapsed&apos;</span>, shout)
+
+    <span class="pl-k">const</span> shout = <span class="hljs-function">(<span class="hljs-params">event, msg</span>) =&gt;</span>
+        alert( msg + <span class="pl-s">&apos;!!!&apos;</span> )
+}
+</code></pre>
+<p><strong>Child Component</strong></p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main, emit} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        events
+    ])
+
+    <span class="pl-k">const</span> events = <span class="hljs-function">(<span class="hljs-params"> {on} </span>) =&gt;</span>
+        on(<span class="pl-s">&apos;click&apos;</span>, thisComponentClick)
+
+    <span class="pl-k">const</span> thisComponentClick = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span>
+        setTimeout( <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            emit(<span class="pl-s">&apos;time-ellapsed&apos;</span>,<span class="pl-s">&apos;10 seconds elapsed since click&apos;</span>)
+        },<span class="hljs-number">10000</span>)
+}
+</code></pre>
+<p>Emit events are bubbled up just like any DOM Events.
+They can be prevented just like any other event.</p>
+<p><strong>Important</strong> : You can only listen to custom events from child components or components that lives in the same markup.</p>
+<h2 id=".trigger">.trigger</h2>
+<p>This handler trigger a event or a custom event of a element. It also uses event delegation.</p>
+<p>Triggering click in the component html element.</p>
+<pre><code class="lang-js">trigger(<span class="pl-s">&apos;click&apos;</span>, {<span class="hljs-attr">isparent</span>:<span class="pl-c1">true</span>})
+</code></pre>
+<p>Triggering click in a child html element.</p>
+<pre><code class="lang-js">trigger(<span class="pl-s">&apos;click&apos;</span>, <span class="pl-s">&apos;button&apos;</span>, {<span class="hljs-attr">ischildnode</span>:<span class="pl-c1">true</span>})
+</code></pre>
+<h2 id=".publish-.subscribe">.publish / .subscribe</h2>
+<p>publish and subscribe functions dispatch global events, it&apos;s usefull when you want to broadcast a message to any who is subscribed to that message. <em>It&apos;s not a DOM event, it will not bubble up</em>.</p>
+<p>Useful when you have to relate components and they haven&apos;t a DOM parent/child relationship.
+<strong>subscribe</strong> returns a <strong>unsubscribe</strong> function that can be called to remove that subscription.</p>
+<p><code>components/somecomponent/index.js</code></p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>[
+        events
+    ])
+
+    <span class="pl-k">const</span> events = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+        on(<span class="pl-s">&apos;click&apos;</span>, <span class="pl-s">&apos;[data-open-modal]&apos;</span>:openModal)
+
+    <span class="pl-k">const</span> openModal = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+        publish(<span class="pl-s">&apos;open:modal&apos;</span>, {<span class="hljs-attr">msg</span>: <span class="pl-s">&apos;My message&apos;</span>})
+}
+</code></pre>
+<p><code>components/modal/index.js</code></p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main, elm} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>[
+        events
+    ])
+
+    <span class="pl-k">const</span> events = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+        subscribe(<span class="pl-s">&apos;open:modal&apos;</span>, open)
+
+    <span class="pl-k">const</span> open = <span class="hljs-function">(<span class="hljs-params"> {msg} </span>) =&gt;</span> {
+        elm.classList.add(<span class="pl-s">&apos;open&apos;</span>)
+        <span class="pl-c1">console</span>.log(<span class="pl-s">&apos;modal opened&apos;</span>, msg)
+    }
+
+    <span class="pl-c">//... more modal implementation</span>
+}
+</code></pre>
+<p><code>Pub/Sub</code> are a global pattern, so in the example above, any component can open the modal by publishing <code>open:modal</code> and any component can subscribe to <code>open:modal</code> in order to be notified when modal is opened.</p>
+<p><strong>Important</strong> : A publish is stored when called before the subscribe. The callback will be instantly called on subscribe.</p>
+<h2 id=".expose">.expose</h2>
+<p>This helper exposes a private <code>function</code>. All inner functions in the component function are private, so in order to access any of them outside you need to expose them.</p>
+<p><code>components/button/index.js</code></p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main, elm} ) =&gt; {
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>[
+        exposing
+    ])
+
+    <span class="pl-c">// Making changeColor() public</span>
+    <span class="pl-k">const</span> exposing = <span class="hljs-function">(<span class="hljs-params"> {expose} </span>) =&gt;</span>
+        expose( {changeColor} )
+
+    <span class="pl-k">const</span> changeColor = <span class="hljs-function">(<span class="hljs-params"> color </span>) =&gt;</span>
+        elm.style.backgroundColor = color
+}
+</code></pre>
+<p>Now, we need a parent component in order to access that <code>changeColor</code> function. So lets learn how to do that by using the <code>get()</code> helper.</p>
+<h2 id=".get">.get</h2>
+<p>This helper is used when you need to get a child component through a parent component, and DOM and Pub/Sub are not sufficient.</p>
+<p>You don&apos;t actually gets the child component, the helper gives you a reference to a child component and you can only execute the child component public functions.</p>
+<p><em>If you don&apos;t know how to make a private function public, please read the section <code>.expose</code> .</em></p>
+<p>The example below is a parent component of the component created in the previous example. So, in order to change the color in the child component lets get its reference and then call his public function.</p>
+<p><code>components/parentOfButtonCP/index.js</code></p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main} ) =&gt; {
+
+    <span class="pl-k">const</span> buttonComponents = get(<span class="pl-s">&apos;button&apos;</span>)
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        changeButtonsColors
+    ])
+
+    <span class="pl-k">const</span> changeChildColors = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+        buttonComponents(<span class="pl-s">&apos;changeColor&apos;</span>, <span class="pl-s">&apos;#336699&apos;</span>)
+}
+</code></pre>
+<p>You can pass a CssSelector as second parameter to get a specific component.</p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main} ) =&gt; {
+
+    <span class="pl-k">const</span> buttonComponents = get(<span class="pl-s">&apos;button&apos;</span>, <span class="pl-s">&apos;.with-this-class&apos;</span>)
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        changeButtonsColors
+    ])
+
+    <span class="pl-k">const</span> changeChildColors = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+        buttonComponents(<span class="pl-s">&apos;changeColor&apos;</span>, <span class="pl-s">&apos;#336699&apos;</span>)
+}
+</code></pre>
+<h2 id=".props">.props</h2>
+<p>The props handler gets all the html attributes of the component <code>HTMLElement</code>, such as : <code>id</code>, <code>class</code>, <code>style</code>, <code>data</code> etc.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-component</span>=<span class="pl-s">&quot;user&quot;</span> <span class="hljs-attr">id</span>=<span class="pl-s">&quot;my-user&quot;</span> <span class="hljs-attr">data-options</span>=<span class="pl-s">&quot;{name:&apos;Clark Kent&apos;, age :33}&quot;</span>&gt;</span>
+    <span class="pl-c">&lt;!-- ... --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main, elm, props} ) =&gt; {
+
+    <span class="pl-k">const</span> {options} = props(<span class="pl-s">&apos;data&apos;</span>) <span class="pl-c">// Almost the same as elm.getAttribute(&apos;data-options&apos;)</span>
+    <span class="pl-k">const</span> id = props(<span class="pl-s">&apos;id&apos;</span>) <span class="pl-c">// The same as elm.getAttribute(&apos;id&apos;) or elm.id</span>
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        <span class="pl-c">//...</span>
+    ])
+}
+</code></pre>
+<p>The main difference between calling <code>props()</code> and <code>.getAttribute()</code> is that getAttribute method will always return a <code>string</code> and <code>props</code> parses the value to the right type.</p>
+<h2 id=".injection">.injection</h2>
+<p>Jails implements a simple system of dependency injection. It&apos;s possible to send all the dependencies for your components on registration, it will be accessible as a helper.</p>
+<p><code>home.js</code></p>
+<pre><code class="lang-js"><span class="pl-k">import</span> jails <span class="pl-k">from</span> <span class="pl-s">&apos;jails-js&apos;</span>
+<span class="pl-k">import</span> Store <span class="pl-k">from</span> <span class="pl-s">&apos;@SomePackage/Store&apos;</span>
+
+<span class="pl-k">import</span> mycomponent <span class="pl-k">from</span> <span class="pl-s">&apos;components/mycomponent&apos;</span>
+<span class="pl-k">import</span> myOtherComponent <span class="pl-k">from</span> <span class="pl-s">&apos;components/my-other-component&apos;</span>
+
+<span class="pl-k">const</span> dependencies = {
+    <span class="hljs-attr">injection</span> :{ <span class="hljs-attr">store</span> :<span class="pl-k">new</span> Store() }
+}
+
+jails(<span class="pl-s">&apos;my-component&apos;</span>, mycomponent, dependencies)
+jails(<span class="pl-s">&apos;my-other-component&apos;</span>, myOtherComponent, dependencies)
+<span class="pl-c">// Other components</span>
+
+<span class="pl-c">// Start jails scan</span>
+jails.start()
+
+</code></pre>
+<p><code>my-component.js</code></p>
+<pre><code class="lang-js"><span class="pl-k">export</span> <span class="pl-k">default</span> ( {<span class="hljs-attr">init</span>:main, injection} ) =&gt; {
+
+    <span class="pl-k">const</span> {store} = injection
+
+    main(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> [
+        registerStore
+    ])
+
+    <span class="pl-k">const</span> registerStore = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+        store.subscribe( update )
+
+    <span class="pl-k">const</span> update = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="pl-c">//DO something when store updates...</span>
+    }
+}
+</code></pre>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="components.html"><span class="title">Introduction</span></a></div>
+          <div class="right"><a href="jails-api.html"><span class="label">Next: </span><span class="title">Documentation</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
