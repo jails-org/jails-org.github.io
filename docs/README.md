@@ -14,3 +14,6 @@
 
 - **Packages**
     - [Introduction](packages.md)
+
+- **Examples**
+    - [Demos](demos.md)

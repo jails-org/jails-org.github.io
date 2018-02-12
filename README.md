@@ -9,7 +9,7 @@
     />
 </div>
 <p style="display:inline-block; vertical-align:bottom; padding:20px">
-    Complex problems asks for simple solutions.<br />
+    Complex questions asks for simple answers.<br />
     A Modern Component Library for building front-end applications.
 </p>
 

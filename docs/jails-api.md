@@ -81,3 +81,33 @@ export default ( {init:main} ) => {
         clearInterval(interval)
 }
 ```
+
+## .use / .extend
+These methods are for extend `Jails`.
+
+### .use
+Used for decorate Jails or override some of its behavior.
+This method expects a function that returns another function which gets the Jails instance to be override/extended, so the developer don't need to care how he should import `Jails` in his plugin.
+
+```js
+jails.use( () => jails => {
+    //Do something with jails here...
+})
+```
+
+Ex. [Logger](https://github.com/jails-org/Packages/blob/master/logger/index.js)
+
+### .extends
+Used for extend components with new helpers.
+This method expects a function that gets options returns another function which gets the Base instance of the components containing all the utility helpers, you just need to append to that instance your new helper.
+
+
+```js
+jails.use( options => Base => {
+    Base.mynewhelper = () => { ... }
+    return Base
+    //Do something with jails here...
+})
+```
+
+Ex. [Reactor](https://github.com/jails-org/Packages/blob/master/reactor/index.js)

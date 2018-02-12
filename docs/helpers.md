@@ -1,27 +1,27 @@
 # Helpers
 
-Helpers are built-in scoped `functions` and `objects` passed to the High-Order function.
+Helpers are built-in scoped `functions` and `objects` utilities passed to the component function.
 
 ## .init
 
-This is the most used helper and it should exist in every component. The role of this `function` is to execute a set of initial functions in the top of your high-order function, you can create all your functions below the `init()` definition and visualize quickly what does you component do when it starts just by looking at the top of your script.
+This is the most used helper and it should exist in every component. The role of this `function` is to execute a set of initial functions in the top of your compoennt function, you can create all your functions below the `init()` definition and visualize quickly what does you component do when it starts just by looking at the top of your script.
 
 **Child components are initialized before its parent components so you can be sure that a container component has its child components ready to be accessed/used.**
 
 ```js
 //Using alias "main" for init, just to make it more ELMish
-export default ( {init:main} ) => {
+export default ( {init:main, elm} ) => {
 
     main(() => [
         sayHello
     ])
 
     const sayHello = () =>
-        console.log('Hello!!!')
+        console.log('Hello!!!', elm)
 }
 ```
 
-**Important**: All the `functions` in the init/main list will get the same helpers from the high-order `function`.
+**Important**: All the `functions` in the init/main list will get the same helpers from the component `function`.
 
 ## .elm
 
@@ -30,13 +30,14 @@ Use this element as a context to search for child nodes using `elm.querySelector
 `elm.querySelectorAll`.
 
 ```js
-export default ( {init:main, elm} ) => {
+export default ( {init:main} ) => {
 
     main(() => [
         logElement
     ])
 
-    const logElement = () => console.log( elm )
+    const logElement = ( {elm} ) =>
+        console.log( elm )
 }
 ```
 
@@ -64,8 +65,8 @@ export default ( {init:main} ) => {
 }
 ```
 
-*Reminder* : **events** function gets the helpers from the high-order function through `init/main` call.
-Use that when possible to make the high-order function definition cleaner.
+*Reminder* : **events** function gets the helpers from the component function through `init/main` call.
+Use that when possible to make the component function definition cleaner.
 
 **Important** : Always use `event delegation` so events can persist even if the child nodes are replaced to new ones.
 
@@ -92,7 +93,7 @@ export default ( {init:main, off} ) => {
 }
 ```
 
-**Important** : In the example above, the `off()` helper has to be defined in the high-order function. That's because `componentClick` is a event handler and it's not directly executed by `init/main` function.
+**Important** : In the example above, the `off()` helper has to be defined in the component function. That's because `componentClick` is a event handler and it's not directly executed by `init/main` function.
 
 
 ## .emit
@@ -111,7 +112,7 @@ export default ( {init:main} ) => {
     ])
 
     const events = ( {on} ) =>
-        on('times-ellapsed', shout)
+        on('time-ellapsed', shout)
 
     const shout = (event, msg) =>
         alert( msg + '!!!' )
@@ -132,7 +133,7 @@ export default ( {init:main, emit} ) => {
 
     const thisComponentClick = event =>
         setTimeout( () => {
-            emit('times-ellapsed','10 seconds elapsed since click')
+            emit('time-ellapsed','10 seconds elapsed since click')
         },10000)
 }
 ```
@@ -201,13 +202,13 @@ export default ( {init:main, elm} ) => {
 }
 ```
 
-`Pub/Sub` are global pattern, so in the example above, any component can open the modal by publishing `open:modal` and any component can subscribe to `open:modal` in order to be notified when modal is opened.
+`Pub/Sub` are a global pattern, so in the example above, any component can open the modal by publishing `open:modal` and any component can subscribe to `open:modal` in order to be notified when modal is opened.
 
-**Important** : A publish is stored when its called before the subscribe. The subscription callback will be instantly called on subscribe.
+**Important** : A publish is stored when called before the subscribe. The callback will be instantly called on subscribe.
 
 ## .expose
 
-This helper exposes a private `function`. All inner functions in the high-order function are private, so in order to access any of them outside you need to expose them.
+This helper exposes a private `function`. All inner functions in the component function are private, so in order to access any of them outside you need to expose them.
 
 `components/button/index.js`
 
@@ -273,7 +274,7 @@ export default ( {init:main} ) => {
 
 ## .props
 
-The props handler gets all the properties of the component `HTMLElement`, such as : `id`, `class`, `style`, `data` etc.
+The props handler gets all the html attributes of the component `HTMLElement`, such as : `id`, `class`, `style`, `data` etc.
 
 ```html
 <div data-component="user" id="my-user" data-options="{name:'Clark Kent', age :33}">
@@ -293,7 +294,7 @@ export default ( {init:main, elm, props} ) => {
 }
 ```
 
-The main difference between call `props()` instead of the DOM `.getAttribute()` is that getAttribute method will always return a `string` and `props` parses the value to the right type.
+The main difference between calling `props()` and `.getAttribute()` is that getAttribute method will always return a `string` and `props` parses the value to the right type.
 
 ## .injection
 
