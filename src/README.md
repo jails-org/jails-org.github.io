@@ -1,6 +1,6 @@
 <h1 class="massive-header -with-tagline">Jails</h1>
 
-> The Next Generation Javascript Library
+> A Modern Javascript Component Library
 
 <div style="height: 140px; overflow: hidden; display: inline-block; vertical-align:middle" >
     <img
