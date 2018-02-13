@@ -10,7 +10,7 @@
     "start": "docpress s"
   },
   "docpress": {
-      "css":"http://ricostacruz.com/docpress-rsc/style.css",
+      "css":"https://ricostacruz.com/docpress-rsc/style.css",
       "github":"https://github.com/jails-org/Jails"
   },
   "dependencies": {
