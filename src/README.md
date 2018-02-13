@@ -4,8 +4,8 @@
 
 <div style="height: 140px; overflow: hidden; display: inline-block; vertical-align:middle" >
     <img
-        src="https://camo.githubusercontent.com/a274ed2d2eaea1ae4cce40a4d2dcea42ae2743aa/687474703a2f2f6a61696c732d6f72672e6769746875622e696f2f4a61696c732f6173736574732f6a61696c732e737667"
-        style="display:block; height:200px"
+        src="https://jails-org.github.io/assets/jails.svg"
+        style="display:block; height:130px"
     />
 </div>
 <p style="display:inline-block; vertical-align:bottom; padding:20px">
