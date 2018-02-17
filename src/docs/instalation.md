@@ -13,11 +13,11 @@ You can also use it directly from [cdn]().
 <div id="embed"></div>
 <script>
     var script = document.createElement('script')
-    script.src = 'http://jsfiddle.net/javiani/7n5ajyao/7/embed/js,html,result/'
+    script.src = 'https://jsfiddle.net/javiani/7n5ajyao/7/embed/js,html,result/'
     document.getElementById('embed').appendChild(script)
 </script>
 
 
 ## Playground
 
-[Jails Playground](http://jsfiddle.net/javiani/7n5ajyao/7/)
+[Jails Playground](https://jsfiddle.net/javiani/7n5ajyao/7/)
