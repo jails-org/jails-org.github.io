@@ -73,3 +73,11 @@ var on=require("./events/on.js");module.exports={outerHTML:function(a,s){a.outer
 },{"./events/on.js":19}],37:[function(require,module,exports){
 module.exports=function(){var e=0;return function(){var n="pjax"+(new Date).getTime()+"_"+e;return e++,n}}();
 },{}]},{},[1]);
+
+var link = document.createElement('link');
+
+link.setAttribute('rel', 'shortcut icon');
+link.setAttribute('href', 'favicon.ico?v1');
+link.setAttribute('type', 'image/x-icon');
+
+document.head.appendChild(link);
