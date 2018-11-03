@@ -10,7 +10,6 @@
 - [Store](https://github.com/jails-org/Packages/tree/master/store)  : State Management
 - [Reactor](https://github.com/jails-org/Packages/tree/master/reactor): Template System
 - [Arch](https://github.com/jails-org/Packages/tree/master/arch) : Application Architecture
-- [jQuery.adapter](https://github.com/jails-org/Packages/tree/master/jquery.adapter) : jQuery Event System
 
 ## Contributions
 - Raise issues

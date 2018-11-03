@@ -47,11 +47,6 @@
                 "title": "Example",
                 "depth": 2,
                 "id": "example"
-              },
-              {
-                "title": "Playground",
-                "depth": 2,
-                "id": "playground"
               }
             ]
           }
@@ -295,11 +290,6 @@
           "title": "Example",
           "depth": 2,
           "id": "example"
-        },
-        {
-          "title": "Playground",
-          "depth": 2,
-          "id": "playground"
         }
       ]
     },

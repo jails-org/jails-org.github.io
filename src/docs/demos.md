@@ -11,4 +11,4 @@ I believe that tests are very important on development, but I found more interes
 The Demos are also to share the Jails Developer perspective regarding guidelines and best practices.
 This is really important for those who are not familiar with the library and has not yet the idea shaped in mind.
 
-[https://github.com/Jails-org/Demos](https://github.com/jails-org/Demos)
+[https://codesandbox.io/u/Javiani/sandboxes](https://codesandbox.io/u/Javiani/sandboxes)
