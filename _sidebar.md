@@ -14,7 +14,6 @@
 	- [Events](events.md)
 	- [Pub/Sub](pubsub.md)
 	- [Expose/Get](expose-get.md)
-	- [Props](props.md)
 	- [Dependency Injection](dependencies.md)
 
 - Template System
@@ -33,6 +32,3 @@
 
 - Packages
 	- [Introduction](packages.md)
-
-- Examples
-	- [Introduction](examples.md)

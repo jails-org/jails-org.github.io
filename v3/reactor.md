@@ -1,9 +1,9 @@
 
-# Render ( Reactor )
+# Reactor
 
 > An Interface to update DOM with a new state, using the fantastic  [SodaJs](https://github.com/AlloyTeam/sodajs) Template System.
 
-You can either choose to change DOM directly or use Template System in Jails. To use the template system and update the view with a new state you have to extract `render` function helper and call it passing a **plain javascript object**.
+You can either choose to change DOM directly or use Template System in Jails. To use the template system and update the view with a new state you have to extract `reactor` function helper and call it passing a **plain javascript object**.
 
 !> Reactor uses [Morphdom](https://github.com/patrick-steele-idem/morphdom) in order to make **diffing** and optimize dom updates, if you choose to use template system, remember that if you do any dom changes manually, using `elm.classList.add` for instance, the next reactor update will discard that change. You can use `data-static` in order to bypass reactor dom changes to a specific node and its descendents.
 
@@ -22,14 +22,14 @@ You can either choose to change DOM directly or use Template System in Jails. To
 ```
 
 ```js
-export default function mycomponent ({ main, render }) {
+export default ({ main, reactor }) => {
 
-    main( _ => [
+    main(() => [
         update
     ])
 
     const update = () => {
-        render({
+        reactor({
             name :'Clark Kent',
             enemies:[
                 'Lex Luthor', 

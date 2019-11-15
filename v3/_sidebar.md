@@ -1,6 +1,6 @@
 <div class="logo">
 	<img class="jails" src="images/logo.svg" alt="" />
-	<img src="https://img.shields.io/badge/-v4-navy" alt="V4" />
+	<img src="https://img.shields.io/badge/-v3-navy" alt="V3" />
 </div>
 
 - Getting Started
@@ -14,6 +14,7 @@
 	- [Events](events.md)
 	- [Pub/Sub](pubsub.md)
 	- [Expose/Get](expose-get.md)
+	- [Props](props.md)
 	- [Dependency Injection](dependencies.md)
 
 - Template System
@@ -32,3 +33,6 @@
 
 - Packages
 	- [Introduction](packages.md)
+
+- Examples
+	- [Introduction](examples.md)

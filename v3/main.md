@@ -7,9 +7,9 @@ Every Jails components are a high level function that gets a set of helpers that
 **The `main` function is used to setup your component definitions when it's mounted.**
 
 ```js
-export default function ({ main }) {
+export default ({ main }) => {
 
-    main( _ => [
+    main(() => [
         log
     ])
 
@@ -28,9 +28,9 @@ You can compose different behaviors/logic with another component to separate dif
 ```js
 import trackings from './tracking'
 
-export default function tracking ({ main }) {
+export default ({ main }) => {
 
-    main( _ => [
+    main(() => [
         trackings,
         log
     ])

@@ -13,14 +13,14 @@ Useful when you want to comunicate between components that hasn't a DOM parent/c
 *components/some-component/index.js*
 
 ```js
-export default ({ main, publish }) => {
+export default function somecomponent ({ main, publish }) {
 
-    main(()=>[
+    main( _ => [
         events
     ])
 
     const events = () => {
-        on('click', '[data-open-modal]':openModal)
+        on('click', '[data-open-modal]', openModal)
     }
 
     const openModal = () => {
@@ -34,9 +34,9 @@ export default ({ main, publish }) => {
 *components/modal/index.js*
 
 ```js
-export default ({ main, elm, subscribe }) => {
+export default function modal ({ main, elm, subscribe }) {
 
-    main(()=>[
+    main( _ => [
         events
     ])
 

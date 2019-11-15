@@ -21,12 +21,3 @@ These modules can be installed and imported on your application just like any ot
     }
 }
 ```
-
-*my-app.js*
-
-```js
-import jails from 'jails-js'
-import logger from 'jails.packages/logger'
-
-jails.use( logger() ).start()
-```

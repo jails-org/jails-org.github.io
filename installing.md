@@ -5,7 +5,7 @@
 
 Adding with `yarn` :
 ```
-yarn add jails-js
+yarn add jails-org/jails-js#@next
 ```
 
 Installing with `npm` :

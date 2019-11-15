@@ -12,17 +12,17 @@ In the following example, we extract the store factory from Jails and create an 
 
 *stores/my-store.js*
 ```js
-import { pandora, log } from 'jails.packages/pandora'
+import { store } from 'jails-js'
 
 export default () => {
 
-	const store = pandora({
+	const appstore = store({
 		model,
 		actions,
-		middlewares: [ log('APP') ]
+		middlewares: [ store.middlewares.log('APP') ]
 	})
 
-	return store
+	return appstore
 }
 
 export const model = {
@@ -58,7 +58,9 @@ import store  from 'stores/my-store'
 import * as mycomponent from '../../components/my-component'
 
 const dependencies = {
-	store  :store()
+	injection  :{
+		store  :store()
+	}
 }
 
 jails.register('my-component', mycomponent, dependencies)
@@ -70,11 +72,11 @@ jails.start()
 *my-component.js*
 
 ```js
-export default function mycomponent({ main, injection }) {
+export default ({ main, injection }) => {
 
     const { store } = injection
 
-    main( _ => [
+    main(() => [
         subscriptions,
         saveIntheStore
     ])

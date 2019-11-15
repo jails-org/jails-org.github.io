@@ -19,9 +19,9 @@ The Model represents all possible states your component will have. You just have
 *components/my-component.js*
 
 ```js
-export default function mycomponent ({ main }) {
+export default ({ main }) => {
 
-    main( _ => [
+    main(() => [
 
     ])
 }
@@ -37,9 +37,9 @@ export const model = {
 Once you have a representation of all your states defined, then you need a way to change them. You do that, by using `Actions`.
 
 ```js
-export default function mycomponent ({ main }) {
+export default ({ main }) => {
 
-    main( _ => [
+    main(() => [
 
     ])
 }
@@ -61,24 +61,24 @@ export const actions = {
 
 Your action is just a named function that will give you the current state, a payload, and the store instance as third parameter. We'll talk about that store instance in the next section.
 
-## Changing State with `msg`
+## Changing State with Msg
 
-You'll get the **msg** helper function after defining a `model` for your component. 
+You'll get the **Msg** helper function after defining a `model` for your component. 
 It is just a instance of a Store that has some methods like : `set`, `getState`, `dispatch`, `subscribe`, etc. You will find more details about those methods in the **Store** section.
 
 So, to change `isVisible` state using actions, you just have to `dispatch` that action.
 
 ```js
-export default function mycomponent ({ main, msg }) {
+export default ({ main, Msg }) => {
 
-    main( _ => [
+    main(() => [
         changeVisibility
     ])
 
     const changeVisibility = () => {
         // Just passing an empty object to ilustrate that 
         // you can also send a payload optionally.
-        msg.dispatch('TOGGLE_VISIBILITY', {}) 
+        Msg.dispatch('TOGGLE_VISIBILITY', {}) 
     }
 }
 
@@ -105,15 +105,15 @@ Sometimes the changes are really simple and you don't necessary need to be verbo
 
 
 ```js
-export default ({ main, msg }) => {
+export default ({ main, Msg }) => {
 
-    main( _ => [
+    main(() => [
         changeVisibility
     ])
 
     const changeVisibility = () => {
         // This method doesn't expect any returned value
-        msg.set( state => {
+        Msg.set( state => {
             state.isVisible = !state.isVisible
         })
     }
@@ -134,15 +134,15 @@ You will find many cases in your application where your markup gets a little mes
 For those cases, you can filter and format your state before it goes to your markup view.
 
 ```js
-export default function mycomponent ({ main, msg }) {
+export default ({ main, Msg }) => {
 
-    main( _ => [
+    main(() => [
         changeVisibility
     ])
 
     const changeVisibility = () => {
         // This method doesn't expect any returned value
-        msg.set( state => {
+        Msg.set( state => {
             state.isVisible = !state.isVisible
         })
     }

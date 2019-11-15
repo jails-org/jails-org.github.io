@@ -27,9 +27,9 @@ jails.register('my-component', mycomponent)
 
 ```js
 
-export default function mycomponent ({ main, elm }) {
+export default ({ main, elm }) => {
 
-    main( _ => [
+    main(() => [
         whoami
     ])
 

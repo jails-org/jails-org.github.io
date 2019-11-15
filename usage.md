@@ -12,9 +12,9 @@
 *my-component.js*
 
 ```js
-export default ({ main, elm }) => {
+export default function mycomponent ({ main, elm }) {
     
-    main(() => [
+    main( _ => [
         log
     ])
 

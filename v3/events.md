@@ -8,22 +8,22 @@ Events are a powerful tool to sending messages from children to parent nodes, it
 A function helper to add event listener that support `event delegation`.
 
 ```js
-export default function mycomponent ({ main }) {
+export default ({ main }) => {
 
-    main( _ => [
+    main(() => [
         events
     ])
 
     const events = ({ on }) => {
         on('click', componentClick)
-        on('click', 'a', linkClick)
+        on('click', {'a':linkClick})
     }
 
     const componentClick = (event) => {
         console.log( 'Clicking in the component area', event.target )
     }
 
-    const linkClick = (event) => {
+    const linkClick = event => {
         console.log( 'Clicking in a child link element', event.target )
     }
 }
@@ -39,7 +39,7 @@ Use that when possible to make the component function definition cleaner.
 A helper that removes a event listener.
 
 ```js
-export default function mycomponent ({ main, off }) {
+export default ({ main, off }) => {
 
     main(() => [
         events
@@ -69,9 +69,9 @@ The first parameter is any string you want, the second parameter optional data t
 **Parent Component**
 
 ```js
-export default function parentcomponent ({ main }) {
+export default ({ main }) => {
 
-    main( _ => [
+    main(() => [
         events
     ])
 
@@ -88,9 +88,9 @@ export default function parentcomponent ({ main }) {
 **Child Component**
 
 ```js
-export default function childcomponent ({ main, emit }){
+export default ({ main, emit }) => {
 
-    main( _ => [
+    main(() => [
         events
     ])
 

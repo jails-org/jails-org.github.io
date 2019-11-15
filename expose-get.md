@@ -10,18 +10,20 @@ All component's functions are private by default, in order to have access to a c
 *components/button/index.js*
 
 ```js
-export default ({ main, elm }) => {
+export default function button ({ main, elm })  {
 
-    main(()=>[
+    main( _ => [
         exposing
     ])
 
     // Making changeColor() public
-    const exposing = ({ expose }) =>
-        expose( {changeColor} )
-
-    const changeColor = ( color ) =>
+    const exposing = ({ expose }) => {
+        expose({ changeColor })
+    }
+        
+    const changeColor = ( color ) => {
         elm.style.backgroundColor = color
+    }        
 }
 ```
 
@@ -36,11 +38,11 @@ The example below is a parent component of the component created in the previous
 *components/parentOfButtonCP/index.js*
 
 ```js
-export default ({ main }) => {
+export default function parentOfButton ({ main }) {
 
     const buttonComponents = get('button')
 
-    main(() => [
+    main( _ => [
         changeButtonsColors
     ])
 
@@ -57,11 +59,11 @@ The default behavior is to find all components named as `button`, in the example
 If you need to specify which component you want to change, you can do so by passing a **CssSelector** as second parameter to get a specific component:
 
 ```js
-export default ({ main }) => {
+export default function parentComponent({ main }) {
 
     const buttonComponents = get('button', '.with-this-class')
 
-    main(() => [
+    main( _ => [
         changeButtonsColors
     ])
 
