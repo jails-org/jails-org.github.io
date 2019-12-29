@@ -868,3 +868,8 @@ pre::after {
     margin: 0 auto 30px;
     display: block; 
 }
+
+.logo img {
+  display: block;
+  margin: 15px auto;
+}
