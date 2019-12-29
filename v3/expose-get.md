@@ -62,7 +62,7 @@ export default ({ main }) => {
     const buttonComponents = get('button', '.with-this-class')
 
     main(() => [
-        changeButtonsColors
+        changeChildColors
     ])
 
     const changeChildColors = () => {
