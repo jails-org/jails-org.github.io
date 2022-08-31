@@ -867,9 +867,15 @@ pre::after {
     width: 120px;
     margin: 0 auto 30px;
     display: block; 
+    text-align: center; 
 }
 
 .logo img {
-  display: block;
-  margin: 15px auto;
+  
+}
+
+.logo h1 {
+  font-size: 40px;
+  font-weight: 300;
+  margin: 10px 0 40px;
 }
