@@ -43,6 +43,17 @@ export default function myComponent ({ main, state }) {
 </my-component>
 ```
 
+### Changing default Delimeters
+
+Jails sets internally the delimiters with a open and close braces `{` `}` only to keep as more simple as possible, but there are some situations where that can cause ambiguity if something on your html has the same open and close braces for other purpose rather for templating, in that case the template system will raise a syntax error. For those cases, the most simple way to fix that is to change default delimiters:
+
+```js
+jails.templateConfig({
+    tags :['@{', '}']
+})
+```
+
+Now you can use `@{ variable }` to display variable data and fix the template error for those cases.
 
 
 ### Cheatsheet
@@ -100,6 +111,18 @@ state.set({
         {list: [{'title': 0 }, {'title': 'bb'}], name: 'b'}
     ]
 })
+```
+
+#### unescape code 
+To provide a minimum protection agains XSS all output will be HTML-escaped. If you need to unescape you have 2 possibilities:
+
+1. Using *:
+```html
+<div>{* varWithHTML }</div>
+```
+2. Using safe filter:
+```html
+<div>{ varwithHTML | safe }</div>
 ```
 
 ```html 
