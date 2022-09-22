@@ -176,6 +176,19 @@ state.set({
 </ul>
 ```
 
+### html-inner
+It's a innerHTML directive, that's an alternative way to display variable value, **and it's not escaped**.
+```js
+<p>My name is <strong html-inner="name"></strong></p>
+```
+
+`html-inner` directive will translate the code above to this:
+
+```js
+<p>My name is <strong>{name}</strong></p>
+```
+
+
 ---
 
 ## Attributes
