@@ -190,7 +190,7 @@ It's a innerHTML directive, that's an alternative way to display variable value,
 
 ### html-model
 In this directive you can send to your component a initialState that will override some attribute of your `model`.
-**IMPORTANT: This directive has to be used on your component html element**
+**IMPORTANT: This directive has to be used on your component `HTMLElement`.**
 
 ```html 
 <my-component html-model="{ counter: 5 }">
