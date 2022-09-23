@@ -179,15 +179,26 @@ state.set({
 ### html-inner
 It's a innerHTML directive, that's an alternative way to display variable value, **and it's not escaped**.
 ```js
-<p>My name is <strong html-inner="name"></strong></p>
+<p>My name is <strong html-inner="name">Some default value</strong></p>
 ```
 
 `html-inner` directive will translate the code above to this:
 
-```js
+```html
 <p>My name is <strong>{name}</strong></p>
 ```
 
+### html-model
+In this directive you can send to your component a initialState that will override some attribute of your `model`.
+**IMPORTANT: This directive has to be used on your component html element**
+
+```html 
+<my-component html-model="{ counter: 5 }">
+    <p>The counter initial value is: {counter}</p>
+    <!-- Or -->
+    <p>The counter initial value is: <span html-inner="counter"></span></p>
+</my-component>
+```
 
 ---
 
