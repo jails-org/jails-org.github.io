@@ -208,10 +208,11 @@ In this directive you can send to your component a initialState that will overri
 You can prepend `html-` for all html attributes, the template system will strip them off. Very usefull for attributes that you need to be quiet on page load, like `src` until js is ready, you don't want to make any requests when before javascript parsing.
 
 #### html-class
-> html-class="{ currItem === 'list1' ? 'active' : ''}"
+It will add to the existing className list if its already set
+> html-class="currItem === 'list1' ? 'active' : ''"
 
 #### html-src
-> html-src="hello-{index}.png"
+> html-src="imageUrl"
 
 
 ## Boolean HTML Attributes
