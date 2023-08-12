@@ -33,11 +33,11 @@ export default function myComponent ({ main, state }) {
 
 ```html
 <my-component>
-    <h1>Hi {name}</h1>
+    <h1>Hi ${name}</h1>
     <ul>
         <li>My Enemies</li>
         <li html-for="enemy in enemies">
-            {enemy}
+            ${enemy}
         </li>
     </ul>
 </my-component>
@@ -65,7 +65,7 @@ state.set({ name : 'Clark Kent' })
 ```
 
 ```html 
-<div>{name}</div>
+<div>${name}</div>
 ```
 
 #### Safe propery chain output
@@ -79,26 +79,26 @@ state.set({
 ```
 
 ```html
-<p>{ info.version }</p>
+<p>${ info.version }</p>
 <!-- result => "2.0" -->
 
-<p>{ info.foo.foo1 }</p>
+<p>${ info.foo.foo1 }</p>
 <!-- // result => ""  without errors -->
 
-<p>{ info['name'] }</p>
+<p>${ info['name'] }</p>
 <!-- // result => "Clark Kent" -->
 ```
 
 #### expression
 
 ```html
-<p>{ 1 + 2 }</p>
+<p>${ 1 + 2 }</p>
 <!--  result => 2 -->
 
-<p>{ true ? 'v' : 'foo' }</p>
+<p>${ true ? 'v' : 'foo' }</p>
 <!-- result => "v" -->
 
-<p>{ 1 < 3 && 'v' }</p>
+<p>${ 1 < 3 && 'v' }</p>
 <!-- result => "v" -->
 ```
 
@@ -111,22 +111,6 @@ state.set({
         {list: [{'title': 0 }, {'title': 'bb'}], name: 'b'}
     ]
 })
-```
-
-#### unescape code 
-To provide a minimum protection agains XSS all output will be HTML-escaped. If you need to unescape you have 2 possibilities:
-
-1. Using *:
-```html
-<div>{* varWithHTML }</div>
-```
-2. Using safe filter:
-```html
-<div>{ varwithHTML | safe }</div>
-```
-
-```html 
-<h1>{ list[list[0].show === 1 ? list[0].name : 1].list[0].title }</h1>
 ```
 
 ## Directives
@@ -143,16 +127,14 @@ state.set({ name : 'Clark Kent', show: true })
 <!-- // result => <div>Hello, Clark Kent</div> -->
 ```
 
-### html-for, html-foreach
-- `html-for` is for arrays 
-- `html-foreach` is for object
+### html-for
+- `html-for` for arrays and objects
 
 Iterable variables `$index` and `$key` is automatically generated.
-You can use foreach for arrays aswell because its iterable, but you will get `$key` variable as your index.
 
 > html-for="item in array"
 
-> html-foreach="item in object"
+> html-for="item in object"
 
 
 ``` js
@@ -169,8 +151,8 @@ state.set({
 <ul>
     <li html-for="item in list">
         <span html-if="item.show">
-            { item.name } 
-            { $index }
+            ${ item.name } 
+            ${ $index }
         </span>
     </li>
 </ul>
@@ -185,7 +167,7 @@ It's a innerHTML directive, that's an alternative way to display variable value,
 `html-inner` directive will translate the code above to this:
 
 ```html
-<p>My name is <strong>{name}</strong></p>
+<p>My name is <strong>${name}</strong></p>
 ```
 
 ### html-model
@@ -194,7 +176,7 @@ In this directive you can send to your component a initialState that will overri
 
 ```html 
 <my-component html-model="{ counter: 5 }">
-    <p>The counter initial value is: {counter}</p>
+    <p>The counter initial value is: ${counter}</p>
     <!-- Or -->
     <p>The counter initial value is: <span html-inner="counter"></span></p>
 </my-component>
