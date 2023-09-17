@@ -20,7 +20,7 @@ Your component is a Javscript module that might contain 3 exported variables:
 *components/my-component.ts*
 
 ```ts
-import { Component, Model, View } from 'jails-js/types'
+import { type Component, View, Model } from 'jails-js'
 
 export default function myComponent( { main, elm, on, state, ... }: Component ) {
     // All javascript goes here...
