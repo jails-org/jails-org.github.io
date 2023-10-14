@@ -15,9 +15,9 @@ In many situations dealing with state is way better then updating ui using dom i
 ```js
 export default function mycomponent ({ main, state }) {
 
-    main( _ => [
-        show
-    ])
+    main( _ => {
+        show()
+    })
 
     const show = () => {
         console.log('Current state', state.get())

@@ -18,9 +18,9 @@ jails.register('my-component', mycomponent)
 ```js
 export default function mycomponent ({ main, elm, unmount }) {
 
-    main( _ => [
+    main( _ => {
         
-    ])
+    })
 
     unmount(() => {
         console.log('I was removed from DOM! =X')

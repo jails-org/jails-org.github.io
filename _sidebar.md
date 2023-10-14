@@ -24,6 +24,3 @@
 - Template System
 	- [Cheatsheet](cheatsheet.md)
 	- [html-static](html-static.md)
-
-- Packages
-	- [Introduction](packages.md)

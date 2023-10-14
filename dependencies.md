@@ -28,8 +28,8 @@ export default function formValidation ({ main, dependencies }) {
     
     const { validators } = dependencies
     
-    main( _ => [
+    main( _ => {
         // ... Do UI validations using validators
-    ])
+    })
 }
 ```

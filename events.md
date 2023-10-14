@@ -61,15 +61,11 @@ The first parameter is any string you want, the second parameter optional data t
 **Parent Component**
 
 ```js
-export default function parentComponent ({ main }) {
+export default function parentComponent ({ main, on }) {
 
-    main( _ => [
-        events
-    ])
-
-    const events = ({ on }) => {
+    main( _ => {
         on('time-ellapsed', shout)
-    }
+    })
 
     const shout = (event, msg) => {
         alert( msg + '!!!' )

@@ -13,9 +13,9 @@ You can either choose to change DOM directly or use Template System in Jails. To
 ```js
 export default function myComponent ({ main, state }) {
 
-    main( _ => [
-        showInfo
-    ])
+    main( _ => { 
+        showInfo()
+    })
 
     const showInfo = () => {
         state.set({

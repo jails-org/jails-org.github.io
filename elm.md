@@ -28,13 +28,9 @@ jails.register('my-component', mycomponent)
 ```js
 export default function mycomponent ({ main, elm }) {
 
-    main( _ => [
-        whoami
-    ])
-
-    const whoami = () => {
+    main( _ => {
         console.log(`Hi! I'm`, elm) 
         // Hi! I'm <my-component...>
-    }
+    })
 }
 ```

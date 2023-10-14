@@ -28,13 +28,9 @@ jails.start()
 ```js
 export default function myComponent ({ main, elm }) {
     
-    main( _ => [
-        log
-    ])
-
-    const log = () => {
+    main( _ => {
         console.log('Hello World!!!', elm)
-    }
+    })
 }
 ```
 

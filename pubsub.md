@@ -13,15 +13,11 @@ Useful when you want to comunicate between components that hasn't a DOM parent/c
 *components/some-component/index.js*
 
 ```js
-export default function somecomponent ({ main, publish }) {
+export default function somecomponent ({ main, on, publish }) {
 
-    main( _ => [
-        events
-    ])
-
-    const events = () => {
+    main( _ => {
         on('click', '[data-open-modal]', openModal)
-    }
+    })
 
     const openModal = () => {
         publish('open:modal', {msg: 'My message'})
