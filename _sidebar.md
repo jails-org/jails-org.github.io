@@ -15,11 +15,12 @@
 	- [main](main.md)
 	- [elm](elm.md)	
 	- [on | off | trigger | emit](events.md)
-	- [publish & subscribe](pubsub.md)
+	- [dependencies](dependencies.md)
 	- [state](state.md)
+	- [publish & subscribe](pubsub.md)
+	- [innerHTML](innerHTML.md)
 	- [unmount](unmount.md)
 	- [onupdate](onupdate.md)
-	- [dependencies](dependencies.md)
 
 - Template System
 	- [Cheatsheet](cheatsheet.md)
