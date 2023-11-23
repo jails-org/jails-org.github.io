@@ -18,7 +18,7 @@ jails.register('my-component', mycomponent)
 *components/my-component.js*
 
 ```js
-export default function mycomponent ({ main, on innerHTML }) {
+export default function mycomponent ({ main, on, innerHTML }) {
 
     let count = 1
 
