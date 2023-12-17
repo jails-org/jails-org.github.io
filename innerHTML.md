@@ -1,8 +1,8 @@
 # innerHTML 
-``` ( html:string ) => void ```
+``` ( html:string | target:HTMLElement, html:string? ) => void ```
 > An innerHTML function to update a HTMLElement with string with dom diffing.
 
-In practice that's the same idea of using `elm.innerHTML` and send a HTML string to your component. The difference here is that `innerHTML` interface uses `morphdom` in order to make optimal changes into the dom.
+In practice that's the same idea of using `element.innerHTML` and send a HTML string to your component. The difference here is that `innerHTML` interface uses `morphdom` in order to make optimal changes into the dom.
 
 This is specially usefull if you are working with a server-side driven model, just like you would do with `htmx`, where your server sends `html` over the ajax calls instead a JSON api.
 
@@ -28,6 +28,26 @@ export default function mycomponent ({ main, on, innerHTML }) {
 
     const updateElement = () => {
         innerHTML(`
+            <h1>Hello World - Counter ${count++}<h1>
+        `)
+    }
+}
+```
+
+Or, using a specific target:
+
+```js
+export default function mycomponent ({ main, elm, on, innerHTML }) {
+
+    let count = 1
+    const target = elm.querySelector('div')
+
+    main( _ => {
+        on('click', button, updateElement)
+    })
+
+    const updateElement = () => {
+        innerHTML(target, `
             <h1>Hello World - Counter ${count++}<h1>
         `)
     }
