@@ -2,8 +2,6 @@
 > The main and most important part of Jails Library, the **Components**. 
 
 We're gonna understand how to build components using this library but in the same time we'll find which parts are gonna help us in tasks that would be more annoying in Vanilla Javascript development.
-
-!> Typescript types are used in examples but they're not mandatory.
  
 ---
 
@@ -14,24 +12,31 @@ Your component is a Javscript module that might contain 3 exported variables:
 1. `export default Function` - **Required** - That is your component function.
 2. `export const model <Object>` - **Optional** - Initial State for your component.
 3. `export const view <Function>` - **Optional** - A middleware to filter current state before being passed to the html view.
+4. `export const template <Function>` - **Optional** - A function that will override default html markup before instantiation.
 
 <br />
 
 *components/my-component.ts*
 
 ```ts
-import { type Component, View, Model } from 'jails-js'
 
-export default function myComponent( { main, elm, on, state, ... }: Component ) {
+export default function myComponent({ main, elm, on, state, ... }) {
     // All javascript goes here...
 }
 
-export const model: Model = {
-    
+export const model = {
+    counter: 0
 }
 
-export const view: View = (state) => {
+export const view = (state) => {
     return state
+}
+
+export const template = () => {
+    return `
+        <h1>Hello World</h1>
+        <p html-inner="counter">...</p>
+    `
 }
 ```
 
